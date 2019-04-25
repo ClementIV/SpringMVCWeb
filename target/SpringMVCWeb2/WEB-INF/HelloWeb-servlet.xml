@@ -14,15 +14,6 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
-    <!--异常处理模块-->
-    <bean class ="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-        <property name="exceptionMappings">
-            <props>
-                <prop key="example.common.exception.SpringException">errors/ExceptionPage</prop>
-            </props>
-        </property>
-        <property name="defaultErrorView" value="errors/error"/>
-    </bean>
 
     <!--静态资源映射-->
     <!--本项目把静态资源放在了webapp的statics目录下，资源映射如下-->
@@ -33,6 +24,16 @@
     <!--静态页面映射-->
     <mvc:resources mapping="/pages/**" location="/WEB-INF/pages/" />
     <mvc:annotation-driven/>
+
+    <!--异常处理模块-->
+    <bean class ="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="example.common.exception.SpringException">errors/ExceptionPage</prop>
+            </props>
+        </property>
+        <property name="defaultErrorView" value="errors/error"/>
+    </bean>
 
     <!--自动扫描装配-->
     <context:component-scan base-package="example.modules.controllers" />
